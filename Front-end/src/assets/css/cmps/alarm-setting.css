@@ -1,0 +1,48 @@
+.alarm-setting {
+    position: fixed;
+    z-index: 1;
+    top: 230px;
+    left: 48vw;
+    height: 165px;
+    width: 200px;
+    background-color: white;
+    color: rgb(252, 252, 239);
+    border: solid 2px black;
+    font-size: 16px;
+    text-align: center;
+}
+
+.alarm-setting .title {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    background-color: white;
+    color: black;
+    text-decoration: underline;
+}
+
+.alarm-setting .m-button {
+    width: 170px;
+    height: 20px;
+    display: block;
+    margin: auto;
+    margin-bottom: 4px;
+    background-color: rgb(234, 234, 234);
+    border: solid 1px;
+    border-color: white black black white;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.alarm-setting .m-button:hover {
+    background-color: rgb(207, 213, 213);
+}
+
+.alarm-setting .m-button:active {
+    border-color:  black rgb(113, 113, 113) rgb(113, 113, 113) black;
+}
+
+
+
+
