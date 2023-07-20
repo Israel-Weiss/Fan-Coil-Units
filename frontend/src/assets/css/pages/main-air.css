@@ -12,13 +12,13 @@
 
 .main-air-continer .screen-continer {
     position: relative;
-    height: 79vh;
+    height: calc(100vh - 127px);
     background-color: rgb(40, 124, 124);
 }
 
 .main-air-continer .main-img {
     position: absolute;
-    height: 79vh;
+    height: calc(100vh - 127px);
     right: 0;
     opacity: 0.85;
 }

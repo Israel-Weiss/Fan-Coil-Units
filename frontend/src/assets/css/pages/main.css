@@ -71,7 +71,7 @@
 
 .main-continer .main-img {
     position: absolute;
-    height: 79vh;
+    height: calc(100vh - 128px);
     width: 100vw;
 }
 

@@ -5,6 +5,7 @@ import { UserPrivew } from "../cmps/user-privew"
 import { AddUser } from "../cmps/add-user"
 import { UpdateUser } from "../cmps/update-user"
 import { useSelector } from "react-redux"
+import '@fortawesome/fontawesome-free/css/all.css'
 
 export const UserManage = () => {
 
@@ -39,7 +40,9 @@ export const UserManage = () => {
 
     const closeModal = () => setUserToUp(null)
 
-    if (!users) return <div>123</div>
+    if (!users) return <div className="user-spinner">
+        <i className="fa-solid fa-spinner fa-2xl fa-spin"></i>
+    </div>
     return <div className="user-manage">
         <section className='title'>User Management</section>
 

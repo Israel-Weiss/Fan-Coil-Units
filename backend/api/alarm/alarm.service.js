@@ -10,7 +10,8 @@ module.exports = {
     endAlarm,
     endAll,
     ackAlarm,
-    ackAll
+    ackAll,
+    startAckInterval
 }
 
 async function query() {
@@ -41,7 +42,8 @@ async function addAlarm(towerName, fcId, typeAlarm) {
 async function endAlarm(alarmId) {
     try {
         let collection = await getCollection(dbName, 'alarm')
-        await collection.updateOne({ id: alarmId, acknolage: false }, { $set: { activation: false, alarmStatus: 2, endTime: new Date().toLocaleString('en-GB') } })
+        await collection.updateOne({ id: alarmId, acknolage: false },
+            { $set: { activation: false, alarmStatus: 2, endTime: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Jerusalem' }) } })
         await collection.deleteOne({ id: alarmId, acknolage: true })
         socketService.emitRender('alarm')
         return
@@ -53,7 +55,7 @@ async function endAlarm(alarmId) {
 async function endAll() {
     try {
         let collection = await getCollection(dbName, 'alarm')
-        await collection.updateMany({ acknolage: false }, { $set: { activation: false, alarmStatus: 2, endTime: new Date().toLocaleString('en-GB') } })
+        await collection.updateMany({ acknolage: false }, { $set: { activation: false, alarmStatus: 2, endTime: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Jerusalem' }) } })
         await collection.deleteMany({ acknolage: true })
         socketService.emitRender('alarm')
         return
@@ -65,7 +67,7 @@ async function endAll() {
 async function ackAlarm(alarmId) {
     try {
         let collection = await getCollection(dbName, 'alarm')
-        await collection.updateOne({ id: alarmId, activation: true }, { $set: { acknolage: true, alarmStatus: 3, ackTime: new Date().toLocaleString('en-GB') } })
+        await collection.updateOne({ id: alarmId, activation: true }, { $set: { acknolage: true, alarmStatus: 3, ackTime: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Jerusalem' }) } })
         await collection.deleteOne({ id: alarmId, activation: false })
         socketService.emitRender('alarm')
         return
@@ -77,7 +79,7 @@ async function ackAlarm(alarmId) {
 async function ackAll() {
     try {
         let collection = await getCollection(dbName, 'alarm')
-        await collection.updateMany({ activation: true }, { $set: { acknolage: true, alarmStatus: 3, ackTime: new Date().toLocaleString('en-GB') } })
+        await collection.updateMany({ activation: true }, { $set: { acknolage: true, alarmStatus: 3, ackTime: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Jerusalem' }) } })
         await collection.deleteMany({ activation: false })
         socketService.emitRender('alarm')
         return
@@ -86,6 +88,14 @@ async function ackAll() {
     }
 }
 
+let intervalId
+async function startAckInterval() {
+    if (intervalId) clearInterval(intervalId)
+    intervalId = setInterval(async () => {
+        await ackAll()
+        socketService.emitRender('alarm')
+    }, 30 * 60 * 1000)
+}
 
 function _createTempAlarm(towerName, fc, typeAlarm) {
     const alarmDescription = typeAlarm === 'high' ? 'High temperature' : 'Low temperature'
@@ -96,7 +106,7 @@ function _createTempAlarm(towerName, fc, typeAlarm) {
             id: fc.id
         },
         alarmStatus: 1,
-        startTime: new Date().toLocaleString('en-GB'),
+        startTime: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Jerusalem' }),
         activation: true,
         endTime: null,
         acknolage: false,

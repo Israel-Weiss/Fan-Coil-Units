@@ -17,10 +17,10 @@ export function AboutHe({ language }) {
             <div className="side-bar">
                 <ul className="list">
                     <li><div className="key" onClick={() => scrol(20)}>כללי</div></li>
-                    <li><div className="key" onClick={() => scrol(190)}>בקרת חדרים</div></li>
+                    <li><div className="key" onClick={() => scrol(210)}>בקרת חדרים</div></li>
                     <li><div className="key" onClick={() => scrol(780)}>כניסת משתמשים</div></li>
-                    <li><div className="key" onClick={() => scrol(1330)}>ניהול משתמשים</div></li>
-                    <li><div className="key" onClick={() => scrol(1680)}>יומן אירועים</div></li>
+                    <li><div className="key" onClick={() => scrol(1300)}>ניהול משתמשים</div></li>
+                    <li><div className="key" onClick={() => scrol(1640)}>יומן אירועים</div></li>
                 </ul>
             </div>
             <div className="text-continer">

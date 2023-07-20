@@ -17,9 +17,9 @@ export function AboutEn({ language }) {
                 <ul className="list">
                     <li><div className="key" onClick={() => scrol(20)}>General</div></li>
                     <li><div className="key" onClick={() => scrol(260)}>Room Control</div></li>
-                    <li><div className="key" onClick={() => scrol(940)}>Login Users</div></li>
-                    <li><div className="key" onClick={() => scrol(1550)}>User Manage</div></li>
-                    <li><div className="key" onClick={() => scrol(1980)}>Event Summary</div></li>
+                    <li><div className="key" onClick={() => scrol(930)}>Login Users</div></li>
+                    <li><div className="key" onClick={() => scrol(1520)}>User Manage</div></li>
+                    <li><div className="key" onClick={() => scrol(1940)}>Event Summary</div></li>
                 </ul>
             </div>
             <div className="text-continer">

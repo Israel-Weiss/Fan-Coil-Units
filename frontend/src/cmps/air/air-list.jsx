@@ -53,9 +53,11 @@ export function AirList({ tower, floor, exitFloor, enterFloor }) {
         loadFcs()
     }
 
-    if (!fcsList) return <div>123</div>
-    const floorNum = +floor.replace('fl', '')
+    if (!fcsList) return <div className="fc-list-spinner">
+        <i className="fa-solid fa-spinner fa-2xl fa-spin"></i>
+    </div>
 
+    const floorNum = +floor.replace('fl', '')
     return <div className="fc-list-continer">
 
         <section className='title-continer'>

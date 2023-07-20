@@ -3,7 +3,8 @@ import { getAlarms, update, updateAll } from "../services/alarm.service"
 import { EventPrivew } from "../cmps/event-privew"
 import { EventSetting } from "../cmps/event-setting"
 import { socketService } from "../services/socket.service"
-
+import '@fortawesome/fontawesome-free/css/all.css'
+import { useSelector } from "react-redux"
 
 export const Event = () => {
 
@@ -22,7 +23,15 @@ export const Event = () => {
 
     const [modalIdAlarm, setModalId] = useState('')
 
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
+
     const openModal = (alarmId) => {
+        console.log(loggedInUser);
+        if (loggedInUser.authorization < 1) return alert(`Hellow ${loggedInUser.name}! 
+        You are not authorized to perform this action. 
+        Please login with an authorized user. 
+        (Try login with - "name: operator, password: 2222" )`)
+
         setModalId(alarmId)
     }
 
@@ -42,7 +51,9 @@ export const Event = () => {
         loadAlarms()
     }
 
-    if (!alarms) return <div className="edit">wait</div>
+    if (!alarms) return <div className="event-spinner">
+        <i className="fa-solid fa-spinner fa-2xl fa-spin"></i>
+    </div>
     return <div className="event">
         <section className='title'>
             Events Summary

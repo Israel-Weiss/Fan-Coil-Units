@@ -1,6 +1,6 @@
 .air-tower .screen-continer{
     position: relative;
-    height: 79vh;
+    height: calc(100vh - 132px);
     background-color: rgb(196, 227, 227);
     align-items: center;
 }
@@ -59,7 +59,7 @@
 .air-tower .screen-continer .img {
     position: absolute;
     top: 0px;
-    height: 79vh;
+    height: calc(100vh - 132px);
     opacity: 0.6;
 }
 
