@@ -11,7 +11,6 @@ const fcRoutes = require('./api/fc/fc.routes')
 const alarmRouts = require('./api/alarm/alarm.routes')
 const userRouts = require('./api/user/user.routes')
 const { setupSocketAPI } = require('./services/socket.service')
-const { log } = require('console')
 const app = require('express')()
 const http = require('http').createServer(app)
 
