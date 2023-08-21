@@ -7,6 +7,7 @@ import { Event } from './pages/event'
 import { About } from './pages/about'
 import { AirTower } from './pages/air-tower'
 import './assets/css/global.css'
+import './assets/scss/global.scss'
 
 function App() {
     return (

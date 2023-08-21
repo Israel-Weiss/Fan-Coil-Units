@@ -1,13 +1,20 @@
 .event-privew {
     height: 18px;
     font-size: 12px;
-}
 
-.event-privew * {
-    padding-left: 6px;
-    cursor: pointer;
-}
+    * {
+        padding-left: 6px;
+        cursor: pointer;
+    }
 
+    .start-time {
+        color: red;
+    }
+    
+    .end-time {
+        color: green;
+    }
+}
 
 .event-privew.open {
     background-color: rgb(255, 230, 230);
@@ -31,12 +38,4 @@
 
 .event-privew.acknolage:hover {
     background-color: rgb(210, 210, 255);
-}
-
-.event-privew .start-time {
-    color: red;
-}
-
-.event-privew .end-time {
-    color: green;
 }
